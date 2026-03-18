@@ -6,7 +6,6 @@ import BiocharCycle from "../components/BiocharCycle";
 import ServiceTiles from "../components/ServiceTiles";
 import GlobalImpact from "../components/GlobalImpact";
 import Footer from "../components/Footer";
-import ImpactSidebar from "../components/ImpactSidebar";
 
 const Home = () => {
   // Scroll to top when component mounts
