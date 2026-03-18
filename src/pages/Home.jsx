@@ -16,7 +16,6 @@ const Home = () => {
 
   return (
     <>
-      <ImpactSidebar />
       <Hero />
       <div id="mission">
         <Identity />
