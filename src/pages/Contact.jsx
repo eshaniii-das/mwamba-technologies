@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import emailjs from '@emailjs/browser';
 import Footer from "../components/Footer";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
-    name: "",
-    email: "",
+    from_name: "",
+    user_email: "",
     company: "",
     phone: "",
     subject: "",
@@ -30,14 +31,27 @@ const Contact = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
-    // Simulate form submission (replace with actual API call)
-    setTimeout(() => {
+    setSubmitStatus(null);
+
+    try {
+      // Send email using EmailJS
+      const result = await emailjs.send(
+        'YOUR_SERVICE_ID',      // Replace with your Service ID
+        'template_ge3vclc', 
+        formData,
+        'hR06tjx3bP7Ia6_kD'
+      );
+
+      console.log('Email sent successfully:', result.text);
+      
+      // Success
       setIsSubmitting(false);
       setSubmitStatus("success");
+      
+      // Reset form
       setFormData({
-        name: "",
-        email: "",
+        from_name: "",
+        user_email: "",
         company: "",
         phone: "",
         subject: "",
@@ -46,7 +60,15 @@ const Contact = () => {
       
       // Reset success message after 5 seconds
       setTimeout(() => setSubmitStatus(null), 5000);
-    }, 1500);
+      
+    } catch (error) {
+      console.error('Email send failed:', error);
+      setIsSubmitting(false);
+      setSubmitStatus("error");
+      
+      // Reset error message after 5 seconds
+      setTimeout(() => setSubmitStatus(null), 5000);
+    }
   };
 
   return (
@@ -90,7 +112,7 @@ const Contact = () => {
         </div>
       </section>
 
-      {/* Contact Form Section */}
+       {/* Contact Form Section */}
       <section className="relative pb-24">
         <div className="container mx-auto px-6 md:px-12 lg:px-20">
           <div className="grid lg:grid-cols-2 gap-12">
@@ -149,7 +171,6 @@ const Contact = () => {
                 </div>
               </div>
             </motion.div>
-
             {/* Contact Form */}
             <motion.div
               initial={{ opacity: 0, x: 30 }}
@@ -162,14 +183,14 @@ const Contact = () => {
                 <form onSubmit={handleSubmit} className="space-y-6">
                   {/* Name */}
                   <div>
-                    <label htmlFor="name" className="block text-white font-semibold mb-2">
+                    <label htmlFor="from_name" className="block text-white font-semibold mb-2">
                       Full Name *
                     </label>
                     <input
                       type="text"
-                      id="name"
-                      name="name"
-                      value={formData.name}
+                      id="from_name"
+                      name="from_name"
+                      value={formData.from_name}
                       onChange={handleChange}
                       required
                       className="w-full px-4 py-3 bg-white/5 border border-electric-cyan/20 rounded-lg text-white placeholder-white/40 focus:outline-none focus:border-electric-cyan/50 transition-colors"
@@ -179,14 +200,14 @@ const Contact = () => {
 
                   {/* Email */}
                   <div>
-                    <label htmlFor="email" className="block text-white font-semibold mb-2">
+                    <label htmlFor="user_email" className="block text-white font-semibold mb-2">
                       Email Address *
                     </label>
                     <input
                       type="email"
-                      id="email"
-                      name="email"
-                      value={formData.email}
+                      id="user_email"
+                      name="user_email"
+                      value={formData.user_email}
                       onChange={handleChange}
                       required
                       className="w-full px-4 py-3 bg-white/5 border border-electric-cyan/20 rounded-lg text-white placeholder-white/40 focus:outline-none focus:border-electric-cyan/50 transition-colors"
@@ -264,8 +285,8 @@ const Contact = () => {
                   <motion.button
                     type="submit"
                     disabled={isSubmitting}
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
+                    whileHover={{ scale: isSubmitting ? 1 : 1.02 }}
+                    whileTap={{ scale: isSubmitting ? 1 : 0.98 }}
                     className={`w-full py-4 rounded-lg font-bold text-lg uppercase tracking-wide transition-all duration-300 ${
                       isSubmitting
                         ? "bg-electric-cyan/50 cursor-not-allowed"
@@ -284,6 +305,19 @@ const Contact = () => {
                     >
                       <p className="text-green-400 font-semibold">
                         ✓ Message sent successfully! We'll get back to you soon.
+                      </p>
+                    </motion.div>
+                  )}
+
+                  {/* Error Message */}
+                  {submitStatus === "error" && (
+                    <motion.div
+                      initial={{ opacity: 0, y: -10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      className="bg-red-500/10 border border-red-500/30 rounded-lg p-4 text-center"
+                    >
+                      <p className="text-red-400 font-semibold">
+                        ✗ Failed to send message. Please try again or email us directly.
                       </p>
                     </motion.div>
                   )}

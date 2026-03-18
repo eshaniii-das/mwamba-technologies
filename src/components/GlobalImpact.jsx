@@ -83,7 +83,33 @@ const GlobalImpact = () => {
 
               {/* Overlay gradient for better contrast */}
               <div className="absolute inset-0 bg-gradient-to-b from-midnight-blue/60 via-transparent to-midnight-blue/60"></div>
-
+{/* Center: The Bridge (Arrow/Connection) */}
+<motion.div
+  initial={{ opacity: 0, scale: 0.8 }}
+  whileInView={{ opacity: 1, scale: 1 }}
+  viewport={{ once: true }}
+  transition={{ duration: 0.8, delay: 0.6 }}
+  className="hidden lg:flex absolute left-1/2 transform -translate-x-1/2 z-20"
+>
+  <div className="relative">
+    {/* Animated Arrow */}
+    <motion.div
+      animate={{ x: [0, 10, 0] }}
+      transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+    >
+      <svg className="w-24 h-24 text-electric-cyan" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+      </svg>
+    </motion.div>
+    
+    {/* Bridge Label */}
+    <div className="absolute -bottom-12 left-1/2 transform -translate-x-1/2 whitespace-nowrap">
+      <span className="bg-electric-cyan/20 border border-electric-cyan/40 text-electric-cyan px-4 py-2 rounded-full text-sm font-bold uppercase">
+        Mwamba Bridge
+      </span>
+    </div>
+  </div>
+</motion.div>
               {/* Region Markers with Accurate Positioning */}
               
               {/* TECH HUBS (Developed Nations - Blue) */}

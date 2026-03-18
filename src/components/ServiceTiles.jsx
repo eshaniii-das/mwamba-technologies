@@ -111,7 +111,6 @@ const ServiceTiles = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
-              whileHover={{ y: -10, scale: 1.02 }}
               className="group relative bg-white/5 backdrop-blur-md border border-electric-cyan/20 rounded-2xl p-8 hover:bg-white/10 hover:border-electric-cyan/40 transition-all duration-300 cursor-pointer overflow-hidden"
             >
               {/* Hover Gradient Effect */}
@@ -141,14 +140,6 @@ const ServiceTiles = () => {
                 <p className="text-lg text-white/80 leading-relaxed group-hover:text-white transition-colors duration-300">
                   {service.description}
                 </p>
-
-                {/* Learn More Arrow (appears on hover) */}
-                <div className="flex items-center space-x-2 mt-6 text-electric-cyan opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <span className="text-sm font-semibold uppercase tracking-wider">Learn More</span>
-                  <svg className="w-5 h-5 transform group-hover:translate-x-2 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                  </svg>
-                </div>
               </div>
             </motion.div>
           ))}

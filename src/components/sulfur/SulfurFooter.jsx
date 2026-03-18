@@ -82,6 +82,7 @@ const SulfurFooter = () => {
           </motion.div>
 
           {/* Quick Links */}
+          <div className="grid md:grid-cols-2 gap-20"></div>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -92,43 +93,9 @@ const SulfurFooter = () => {
             <ul className="space-y-2">
               <li><Link to="/" className="text-white/70 hover:text-safety-orange transition-colors">Home</Link></li>
               <li><Link to="/sulfur-technology" className="text-white/70 hover:text-safety-orange transition-colors">Sulfur Technology</Link></li>
-              <li><a href="#origin" className="text-white/70 hover:text-safety-orange transition-colors">Origin Story</a></li>
-              <li><a href="#catalyst" className="text-white/70 hover:text-safety-orange transition-colors">Catalyst Core</a></li>
-              <li><a href="#data" className="text-white/70 hover:text-safety-orange transition-colors">Performance Data</a></li>
-            </ul>
+              </ul>
           </motion.div>
 
-          {/* Technical Specs */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-          >
-            <h4 className="text-lg font-bold text-white mb-4">Tech Specs</h4>
-            <ul className="space-y-2 text-white/70">
-              <li className="flex items-center space-x-2">
-                <span className="text-safety-orange">•</span>
-                <span>Operating Temp: 130°C–170°C</span>
-              </li>
-              <li className="flex items-center space-x-2">
-                <span className="text-safety-orange">•</span>
-                <span>Catalyst Form: Extrudates/Powder</span>
-              </li>
-              <li className="flex items-center space-x-2">
-                <span className="text-safety-orange">•</span>
-                <span>TRL: 4-5 (Validated)</span>
-              </li>
-              <li className="flex items-center space-x-2">
-                <span className="text-safety-orange">•</span>
-                <span>Impurity Removal: &gt;95%</span>
-              </li>
-              <li className="flex items-center space-x-2">
-                <span className="text-safety-orange">•</span>
-                <span>Catalyst Reuse: 10+ Cycles</span>
-              </li>
-            </ul>
-          </motion.div>
 
           {/* Contact Info */}
           <motion.div
@@ -143,16 +110,8 @@ const SulfurFooter = () => {
                 <svg className="w-5 h-5 text-safety-orange flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                 </svg>
-                <a href="mailto:sulfur@mwambatechnologiesusa.com" className="text-white/70 hover:text-safety-orange transition-colors">
+                <a href="mailto:research@mwambacarbon.com" className="text-white/70 hover:text-safety-orange transition-colors">
                   research@mwambacarbon.com
-                </a>
-              </li>
-              <li className="flex items-start space-x-3">
-                <svg className="w-5 h-5 text-safety-orange flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                </svg>
-                <a href="#" className="text-white/70 hover:text-safety-orange transition-colors">
-                  Download Technical Brief
                 </a>
               </li>
               <li className="flex items-start space-x-3">
