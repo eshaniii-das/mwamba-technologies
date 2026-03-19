@@ -29,47 +29,59 @@ const Contact = () => {
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    setSubmitStatus(null);
+  e.preventDefault();
+  setIsSubmitting(true);
+  setSubmitStatus(null);
 
-    try {
-      // Send email using EmailJS
-      const result = await emailjs.send(
-        'YOUR_SERVICE_ID',      // Replace with your Service ID
-        'template_ge3vclc', 
-        formData,
-        'hR06tjx3bP7Ia6_kD'
-      );
+  try {
+    // Prepare template parameters with correct variable names
+    const templateParams = {
+      from_name: formData.from_name,
+      user_email: formData.user_email,
+      company: formData.company || 'Not provided',
+      phone: formData.phone || 'Not provided',
+      subject: formData.subject,
+      message: formData.message,
+      reply_to: formData.user_email,
+    };
 
-      console.log('Email sent successfully:', result.text);
-      
-      // Success
-      setIsSubmitting(false);
-      setSubmitStatus("success");
-      
-      // Reset form
-      setFormData({
-        from_name: "",
-        user_email: "",
-        company: "",
-        phone: "",
-        subject: "",
-        message: "",
-      });
-      
-      // Reset success message after 5 seconds
-      setTimeout(() => setSubmitStatus(null), 5000);
-      
-    } catch (error) {
-      console.error('Email send failed:', error);
-      setIsSubmitting(false);
-      setSubmitStatus("error");
-      
-      // Reset error message after 5 seconds
-      setTimeout(() => setSubmitStatus(null), 5000);
-    }
-  };
+    // Send email using EmailJS
+    const result = await emailjs.send(
+      'service_tblvlun',      // Your Service ID
+      'template_ge3vclc',     // Your Template ID
+      templateParams,         // Use templateParams instead of formData
+      'hR06tjx3bP7Ia6_kD'     // Your Public Key
+    );
+
+    console.log('Email sent successfully:', result.text);
+    
+    // Success
+    setIsSubmitting(false);
+    setSubmitStatus("success");
+    
+    // Reset form
+    setFormData({
+      from_name: "",
+      user_email: "",
+      company: "",
+      phone: "",
+      subject: "",
+      message: "",
+    });
+    
+    // Reset success message after 5 seconds
+    setTimeout(() => setSubmitStatus(null), 5000);
+    
+  } catch (error) {
+    console.error('Email send failed:', error);
+    console.error('Error details:', error.text); // More detailed error
+    setIsSubmitting(false);
+    setSubmitStatus("error");
+    
+    // Reset error message after 5 seconds
+    setTimeout(() => setSubmitStatus(null), 5000);
+  }
+};
 
   return (
     <div className="bg-gradient-to-br from-midnight-blue via-steel-blue to-charcoal-grey min-h-screen">

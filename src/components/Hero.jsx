@@ -66,7 +66,7 @@ const Hero = () => {
     <section className="relative w-full min-h-screen overflow-hidden">
       {/* Background Container */}
       <div className="absolute inset-0 w-full h-full overflow-hidden">
-        
+
         {/* Video Background */}
         {!videoError && (
           <video
@@ -87,24 +87,23 @@ const Hero = () => {
 
         {/* Fallback Image Background (if video fails) */}
         {videoError && (
-          <div 
+          <div
             className="absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat"
             style={{
               backgroundImage: `linear-gradient(135deg, rgba(10, 17, 40, 0.90) 0%, rgba(44, 62, 80, 0.80) 50%, rgba(10, 17, 40, 0.90) 100%), url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2672&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')`,
             }}
           ></div>
         )}
-        
+
         {/* Gradient Overlay */}
         <div className="absolute inset-0 bg-gradient-to-br from-midnight-blue/90 via-steel-blue/80 to-midnight-blue/90 z-10"></div>
-        
-        
+
       </div>
 
       {/* Main Content - Centered */}
       <div className="relative z-30 w-full min-h-screen flex items-center justify-center px-6 md:px-12 lg:px-20">
         <div className="max-w-5xl w-full text-center">
-          
+
           {/* Main Headline */}
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
@@ -112,7 +111,7 @@ const Hero = () => {
             transition={{ duration: 0.8, ease: "easeOut" }}
             className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold leading-tight text-white mb-8"
           >
-            Sparking Tomorrow, 
+            Sparking Tomorrow,
             <br />
             <span className="text-electric-cyan">Today.</span>
           </motion.h1>
@@ -124,7 +123,7 @@ const Hero = () => {
             transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
             className="text-xl md:text-2xl lg:text-3xl text-white/90 leading-relaxed mb-12 max-w-4xl mx-auto"
           >
-            Breakthrough technology developers and innovation architects weaving 
+            Breakthrough technology developers and innovation architects weaving
             cutting-edge skills into custom solutions for the world's toughest challenges.
           </motion.p>
 
@@ -133,8 +132,11 @@ const Hero = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
-          >                    
-            <button className="bg-electric-cyan hover:bg-white/500 text-midnight-blue font-bold text-lg md:text-xl px-12 py-5 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-2xl hover:shadow-cyan-500/50 uppercase tracking-wide">
+          >
+            <button
+              className="bg-electric-cyan hover:bg-white/500 text-midnight-blue font-bold text-lg md:text-xl px-12 py-5 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-2xl hover:shadow-cyan-500/50 uppercase tracking-wide"
+              onClick={() => window.location.href = '/contact'}
+            >
               Join the Movement
             </button>
           </motion.div>

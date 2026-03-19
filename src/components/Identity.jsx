@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 
 const Identity = () => {
   return (
-    <section className="relative bg-gradient-to-br from-steel-blue via-charcoal-grey to-midnight-blue py-24 md:py-32 overflow-hidden">
+    <section id="about" className="relative bg-gradient-to-br from-steel-blue via-charcoal-grey to-midnight-blue py-24 md:py-32 overflow-hidden">
       {/* Decorative Background Elements */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute top-0 left-0 w-96 h-96 bg-electric-cyan rounded-full blur-3xl"></div>

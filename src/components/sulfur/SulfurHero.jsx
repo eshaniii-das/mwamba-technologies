@@ -72,7 +72,7 @@ const SulfurHero = () => {
       />
 
       {/* Background Image Overlay */}
-      <div 
+      <div
         className="absolute inset-0 opacity-10"
         style={{
           backgroundImage: `url('https://images.unsplash.com/photo-1532094349884-543bc11b234d?q=80&w=2000')`,
@@ -88,7 +88,9 @@ const SulfurHero = () => {
       {/* Main Content */}
       <div className="relative z-10 container mx-auto px-6 md:px-12 lg:px-20 min-h-screen flex items-center">
         <div className="w-full max-w-5xl py-20">
-          
+          {/* Add spacing between navbar and content */}
+          <div className="pt-24 sm:pt-12"></div>
+
           {/* Badge/Label */}
           <motion.div
             initial={{ opacity: 0, y: -20 }}
@@ -120,7 +122,7 @@ const SulfurHero = () => {
             transition={{ duration: 0.6, delay: 0.4 }}
             className="text-lg md:text-xl text-white/90 mb-8 max-w-4xl leading-relaxed"
           >
-            Leveraging our proprietary Fe-B-O catalyst technology to upgrade refinery-grade sulfur 
+            Leveraging our proprietary Fe-B-O catalyst technology to upgrade refinery-grade sulfur
             into high-purity, stabilized feedstocks for the global energy and chemical transition.
           </motion.p>
 
@@ -131,7 +133,10 @@ const SulfurHero = () => {
             transition={{ duration: 0.6, delay: 0.6 }}
             className="flex flex-col sm:flex-row gap-4"
           >
-            <button className="bg-white/10 hover:bg-white/20 backdrop-blur-md border-2 border-safety-orange/40 hover:border-safety-orange text-white font-bold text-lg px-10 py-4 rounded-lg transition-all duration-300 transform hover:scale-105 uppercase tracking-wide">
+            <button
+              className="bg-white/10 hover:bg-white/20 backdrop-blur-md border-2 border-safety-orange/40 hover:border-safety-orange text-white font-bold text-lg px-10 py-4 rounded-lg transition-all duration-300 transform hover:scale-105 uppercase tracking-wide"
+              onClick={() => window.location.href = '/contact'}
+            >
               Inquire for Partnership
             </button>
           </motion.div>
@@ -146,7 +151,7 @@ const SulfurHero = () => {
             <p className="text-white/60 text-sm uppercase tracking-wider mb-6 font-semibold">
               Technology Readiness Level 4-5
             </p>
-            
+
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
               <div className="text-center md:text-left">
                 <h3 className="text-3xl md:text-4xl font-bold text-safety-orange mb-1">&gt;95%</h3>

@@ -2,6 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  :root {
+    --midnight-blue: #0A1128;
+    --steel-blue: #1E2A47;
+    --charcoal-grey: #2D3748;
+    --electric-cyan: #00D9FF;
+  }
+}
+
 /* Global Reset & Overflow Prevention */
 * {
   margin: 0;

@@ -1,11 +1,11 @@
 import React, { useEffect } from "react";
 import Hero from "../components/Hero";
 import Identity from "../components/Identity";
-import MwambaBridge from "../components/MwambaBridge";
 import BiocharCycle from "../components/BiocharCycle";
 import ServiceTiles from "../components/ServiceTiles";
 import GlobalImpact from "../components/GlobalImpact";
 import Footer from "../components/Footer";
+import ExpertiseCore from "../components/ExpertiseCore";
 
 const Home = () => {
   // Scroll to top when component mounts
@@ -16,15 +16,11 @@ const Home = () => {
   return (
     <>
       <Hero />
-      <div id="mission">
-        <Identity />
-      </div>
-      <MwambaBridge />
-      <BiocharCycle />
-      <div id="services">
-        <ServiceTiles />
-      </div>
+      <Identity />
+      <ExpertiseCore />
+      <ServiceTiles />
       <GlobalImpact />
+      <BiocharCycle />
       <Footer />
     </>
   );

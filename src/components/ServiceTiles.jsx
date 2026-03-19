@@ -61,7 +61,7 @@ const ServiceTiles = () => {
   ];
 
   return (
-    <section className="relative bg-gradient-to-br from-steel-blue via-charcoal-grey to-midnight-blue py-24 md:py-32 overflow-hidden">
+    <section id="services" className="relative bg-gradient-to-br from-midnight-blue via-steel-blue to-charcoal-grey py-24 md:py-32 overflow-hidden">
       {/* Decorative Background Elements */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute top-1/4 left-0 w-96 h-96 bg-electric-cyan rounded-full blur-3xl"></div>
