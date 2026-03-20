@@ -2,9 +2,11 @@ import React, { useCallback, useState } from "react";
 import { motion } from "framer-motion";
 import Particles from "react-tsparticles";
 import { loadSlim } from "tsparticles-slim";
+import { useNavigate } from "react-router-dom"; // Add this import
 
 const Hero = () => {
   const [videoError, setVideoError] = useState(false);
+  const navigate = useNavigate(); // Add this hook
 
   const particlesInit = useCallback(async (engine) => {
     await loadSlim(engine);
@@ -134,8 +136,8 @@ const Hero = () => {
             transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
           >
             <button
-              className="bg-electric-cyan hover:bg-white/500 text-midnight-blue font-bold text-lg md:text-xl px-12 py-5 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-2xl hover:shadow-cyan-500/50 uppercase tracking-wide"
-              onClick={() => window.location.href = '/contact'}
+              className="bg-electric-cyan hover:bg-cyan-500 text-midnight-blue font-bold text-lg md:text-xl px-12 py-5 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-2xl hover:shadow-cyan-500/50 uppercase tracking-wide"
+              onClick={() => navigate('/contact')}
             >
               Join the Movement
             </button>

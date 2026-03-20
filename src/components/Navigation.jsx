@@ -105,7 +105,7 @@ const Navigation = () => {
       <img 
         src="/logo.jpg" 
         alt="Mwamba Technologies Logo" 
-        className="w-full h-full object-contain"
+        className="w-fit h-fit object-contain"
       />
     </div>
     

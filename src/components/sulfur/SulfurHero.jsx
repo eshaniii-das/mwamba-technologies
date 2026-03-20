@@ -2,8 +2,11 @@ import React, { useCallback } from "react";
 import { motion } from "framer-motion";
 import Particles from "react-tsparticles";
 import { loadSlim } from "tsparticles-slim";
+import { useNavigate } from "react-router-dom";
 
 const SulfurHero = () => {
+  const navigate = useNavigate();
+  
   const particlesInit = useCallback(async (engine) => {
     await loadSlim(engine);
   }, []);
@@ -89,7 +92,7 @@ const SulfurHero = () => {
       <div className="relative z-10 container mx-auto px-6 md:px-12 lg:px-20 min-h-screen flex items-center">
         <div className="w-full max-w-5xl py-20">
           {/* Add spacing between navbar and content */}
-          <div className="pt-24 sm:pt-12"></div>
+          <div className="pt-24 md:pt-32"></div>
 
           {/* Badge/Label */}
           <motion.div
@@ -126,7 +129,7 @@ const SulfurHero = () => {
             into high-purity, stabilized feedstocks for the global energy and chemical transition.
           </motion.p>
 
-          {/* CTA Buttons */}
+          {/* CTA Buttons - FIXED */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -135,7 +138,7 @@ const SulfurHero = () => {
           >
             <button
               className="bg-white/10 hover:bg-white/20 backdrop-blur-md border-2 border-safety-orange/40 hover:border-safety-orange text-white font-bold text-lg px-10 py-4 rounded-lg transition-all duration-300 transform hover:scale-105 uppercase tracking-wide"
-              onClick={() => window.location.href = '/contact'}
+              onClick={() => navigate('/contact')}
             >
               Inquire for Partnership
             </button>

@@ -1,10 +1,11 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const SulfurFooter = () => {
   const currentYear = new Date().getFullYear();
-
+  const navigate = useNavigate()
   return (
     <footer className="relative bg-gradient-to-br from-midnight-blue via-charcoal-grey to-steel-blue pt-20 pb-8 overflow-hidden">
       {/* Decorative Background Elements */}
@@ -44,7 +45,7 @@ const SulfurFooter = () => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             className="bg-safety-orange hover:bg-orange-600 text-white font-bold text-lg px-12 py-5 rounded-lg transition-all duration-300 shadow-2xl hover:shadow-safety-orange/50 uppercase tracking-wide mb-12"
-            onClick={() => window.location.href = '/contact'}
+            onClick={() => navigate('/contact')}
           >
             Contact Our Engineering Team
           </motion.button>

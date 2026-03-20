@@ -1,9 +1,10 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
-
+  const navigate = useNavigate()
   return (
     <footer className="relative bg-gradient-to-br from-charcoal-grey via-midnight-blue to-midnight-blue pt-20 pb-8 overflow-hidden">
 
@@ -38,7 +39,7 @@ const Footer = () => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             className="bg-electric-cyan hover:bg-cyan-500 text-midnight-blue font-bold text-lg px-12 py-5 rounded-lg transition-all duration-300 shadow-2xl hover:shadow-cyan-500/50 uppercase tracking-wide mb-12"
-            onClick={() => window.location.href = '/contact'}
+            onClick={() => navigate('/contact')}
           >
             Collaborate With Us
           </motion.button>
