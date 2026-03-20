@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useState } from "react";
 import { motion } from "framer-motion";
 import Particles from "react-tsparticles";
 import { loadSlim } from "tsparticles-slim";
@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 
 const SulfurHero = () => {
   const navigate = useNavigate();
+  const [videoError, setVideoError] = useState(false); // ADD THIS LINE
   
   const particlesInit = useCallback(async (engine) => {
     await loadSlim(engine);
@@ -64,26 +65,42 @@ const SulfurHero = () => {
   };
 
   return (
-    <section className="relative min-h-screen bg-gradient-to-br from-steel-blue via-charcoal-grey to-midnight-blue overflow-hidden">
-      {/* Particles Background */}
-      <Particles
-        id="tsparticles-sulfur"
-        init={particlesInit}
-        loaded={particlesLoaded}
-        options={particleOptions}
-        className="absolute inset-0"
-      />
+    <section className="relative w-full min-h-screen overflow-hidden">
+      {/* Background Container */}
+      <div className="absolute inset-0 w-full h-full overflow-hidden">
 
-      {/* Background Image Overlay */}
-      <div
-        className="absolute inset-0 opacity-10"
-        style={{
-          backgroundImage: `url('https://images.unsplash.com/photo-1532094349884-543bc11b234d?q=80&w=2000')`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          filter: 'brightness(0.4) contrast(1.2)',
-        }}
-      ></div>
+        {/* Video Background */}
+        {!videoError && (
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="absolute inset-0 w-full h-full object-cover"
+            onError={() => {
+              console.error("Video failed to load. Check file path: public/tech-background2.mp4");
+              setVideoError(true);
+            }}
+            onLoadedData={() => console.log("Video loaded successfully!")}
+          >
+            <source src="/tech-background2.mp4" type="video/mp4" />
+          </video>
+        )}
+
+        {/* Fallback Image Background (if video fails) */}
+        {videoError && (
+          <div
+            className="absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat"
+            style={{
+              backgroundImage: `linear-gradient(135deg, rgba(10, 17, 40, 0.90) 0%, rgba(44, 62, 80, 0.80) 50%, rgba(10, 17, 40, 0.90) 100%), url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2672&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')`,
+            }}
+          ></div>
+        )}
+
+        {/* Gradient Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-br from-midnight-blue/90 via-steel-blue/80 to-midnight-blue/90 z-10"></div>
+
+      </div>
 
       {/* Subtle overlay for better text readability */}
       <div className="absolute inset-0 bg-steel-blue/40"></div>
@@ -92,7 +109,7 @@ const SulfurHero = () => {
       <div className="relative z-10 container mx-auto px-6 md:px-12 lg:px-20 min-h-screen flex items-center">
         <div className="w-full max-w-5xl py-20">
           {/* Add spacing between navbar and content */}
-          <div className="pt-24 md:pt-32"></div>
+          <div className="pt-24 md:pt-12"></div>
 
           {/* Badge/Label */}
           <motion.div
@@ -129,7 +146,7 @@ const SulfurHero = () => {
             into high-purity, stabilized feedstocks for the global energy and chemical transition.
           </motion.p>
 
-          {/* CTA Buttons - FIXED */}
+          {/* CTA Buttons */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}

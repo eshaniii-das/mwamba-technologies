@@ -29,59 +29,59 @@ const Contact = () => {
   };
 
   const handleSubmit = async (e) => {
-  e.preventDefault();
-  setIsSubmitting(true);
-  setSubmitStatus(null);
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus(null);
 
-  try {
-    // Prepare template parameters with correct variable names
-    const templateParams = {
-      from_name: formData.from_name,
-      user_email: formData.user_email,
-      company: formData.company || 'Not provided',
-      phone: formData.phone || 'Not provided',
-      subject: formData.subject,
-      message: formData.message,
-      reply_to: formData.user_email,
-    };
+    try {
+      // Prepare template parameters with correct variable names
+      const templateParams = {
+        from_name: formData.from_name,
+        user_email: formData.user_email,
+        company: formData.company || 'Not provided',
+        phone: formData.phone || 'Not provided',
+        subject: formData.subject,
+        message: formData.message,
+        reply_to: formData.user_email,
+      };
 
-    // Send email using EmailJS
-    const result = await emailjs.send(
-      'service_tblvlun',      // Your Service ID
-      'template_ge3vclc',     // Your Template ID
-      templateParams,         // Use templateParams instead of formData
-      'hR06tjx3bP7Ia6_kD'     // Your Public Key
-    );
+      // Send email using EmailJS
+      const result = await emailjs.send(
+        'service_tblvlun',
+        'template_ge3vclc',
+        templateParams,
+        'hR06tjx3bP7Ia6_kD'
+      );
 
-    console.log('Email sent successfully:', result.text);
-    
-    // Success
-    setIsSubmitting(false);
-    setSubmitStatus("success");
-    
-    // Reset form
-    setFormData({
-      from_name: "",
-      user_email: "",
-      company: "",
-      phone: "",
-      subject: "",
-      message: "",
-    });
-    
-    // Reset success message after 5 seconds
-    setTimeout(() => setSubmitStatus(null), 5000);
-    
-  } catch (error) {
-    console.error('Email send failed:', error);
-    console.error('Error details:', error.text); // More detailed error
-    setIsSubmitting(false);
-    setSubmitStatus("error");
-    
-    // Reset error message after 5 seconds
-    setTimeout(() => setSubmitStatus(null), 5000);
-  }
-};
+      console.log('Email sent successfully:', result.text);
+      
+      // Success
+      setIsSubmitting(false);
+      setSubmitStatus("success");
+      
+      // Reset form
+      setFormData({
+        from_name: "",
+        user_email: "",
+        company: "",
+        phone: "",
+        subject: "",
+        message: "",
+      });
+      
+      // Reset success message after 5 seconds
+      setTimeout(() => setSubmitStatus(null), 5000);
+      
+    } catch (error) {
+      console.error('Email send failed:', error);
+      console.error('Error details:', error.text);
+      setIsSubmitting(false);
+      setSubmitStatus("error");
+      
+      // Reset error message after 5 seconds
+      setTimeout(() => setSubmitStatus(null), 5000);
+    }
+  };
 
   return (
     <div className="bg-gradient-to-br from-midnight-blue via-steel-blue to-charcoal-grey min-h-screen">
@@ -124,7 +124,7 @@ const Contact = () => {
         </div>
       </section>
 
-       {/* Contact Form Section */}
+      {/* Contact Form Section */}
       <section className="relative pb-24">
         <div className="container mx-auto px-6 md:px-12 lg:px-20">
           <div className="grid lg:grid-cols-2 gap-12">
@@ -140,6 +140,7 @@ const Contact = () => {
                 <h2 className="text-3xl font-bold text-white mb-6">Contact Information</h2>
                 
                 <div className="space-y-6">
+                  {/* General Email */}
                   <div className="flex items-start space-x-4">
                     <div className="w-12 h-12 bg-electric-cyan/20 rounded-lg flex items-center justify-center flex-shrink-0">
                       <svg className="w-6 h-6 text-electric-cyan" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -147,13 +148,29 @@ const Contact = () => {
                       </svg>
                     </div>
                     <div>
-                      <h3 className="text-lg font-semibold text-white mb-1">Email</h3>
-                      <a href="mailto:info@mwambatechnologiesusa.com" className="text-electric-cyan hover:text-cyan-400 transition-colors">
+                      <h3 className="text-lg font-semibold text-white mb-1">General Inquiries</h3>
+                      <a href="mailto:info@mwambacarbon.com" className="text-electric-cyan hover:text-cyan-400 transition-colors">
                         info@mwambacarbon.com
                       </a>
                     </div>
                   </div>
 
+                  {/* Sulfur Technology Email */}
+                  <div className="flex items-start space-x-4">
+                    <div className="w-12 h-12 bg-safety-orange/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <svg className="w-6 h-6 text-safety-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
+                      </svg>
+                    </div>
+                    <div>
+                      <h3 className="text-lg font-semibold text-white mb-1">Sulfur Technology & Research</h3>
+                      <a href="mailto:research@mwambacarbon.com" className="text-safety-orange hover:text-orange-400 transition-colors">
+                        research@mwambacarbon.com
+                      </a>
+                    </div>
+                  </div>
+
+                  {/* Phone */}
                   <div className="flex items-start space-x-4">
                     <div className="w-12 h-12 bg-electric-cyan/20 rounded-lg flex items-center justify-center flex-shrink-0">
                       <svg className="w-6 h-6 text-electric-cyan" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -162,12 +179,13 @@ const Contact = () => {
                     </div>
                     <div>
                       <h3 className="text-lg font-semibold text-white mb-1">Phone</h3>
-                      <a href="tel:+1234567890" className="text-electric-cyan hover:text-cyan-400 transition-colors">
+                      <a href="tel:+18142064451" className="text-electric-cyan hover:text-cyan-400 transition-colors">
                         +1 (814) 206-4451
                       </a>
                     </div>
                   </div>
 
+                  {/* Location */}
                   <div className="flex items-start space-x-4">
                     <div className="w-12 h-12 bg-electric-cyan/20 rounded-lg flex items-center justify-center flex-shrink-0">
                       <svg className="w-6 h-6 text-electric-cyan" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -177,12 +195,13 @@ const Contact = () => {
                     </div>
                     <div>
                       <h3 className="text-lg font-semibold text-white mb-1">Location</h3>
-                      <p className="text-white/70">United States</p>
+                      <p className="text-white/70">University Park, PA, USA</p>
                     </div>
                   </div>
                 </div>
               </div>
             </motion.div>
+
             {/* Contact Form */}
             <motion.div
               initial={{ opacity: 0, x: 30 }}

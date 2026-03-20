@@ -201,6 +201,7 @@ const DataCards = () => {
             </div>
           </div>
         </motion.div>
+
       </div>
     </section>
   );
